@@ -81,7 +81,7 @@ class DATABASE_CONFIG {
 		'password' => 'nD7hTuVE',
 		'database' => 'shortlist_db',
 		'prefix' => '',
-		'port' => '8889'
+		'port' => '/Applications/MAMP/tmp/mysql/mysql.sock',
 		//'encoding' => 'utf8',
 	);
 
