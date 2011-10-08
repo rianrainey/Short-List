@@ -66,4 +66,16 @@ class UsersController extends AppController {
 	function profile_form ($id = null) {
 	  
 	}
+	
+	function find_applicant ($id = null) {
+	  $this->User->recursive = 0;
+	  
+	  $this->loadModel('Trait');
+	  $traits = $this->Trait->find('list');
+	  //var_dump($traits);
+	  
+		//$users = $this->paginate('User');// $this->set(compact('users', 'traits'), $this->paginate());
+		$this->set(compact('traits'));
+		
+	}
 }

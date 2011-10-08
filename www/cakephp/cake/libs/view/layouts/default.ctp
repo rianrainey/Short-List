@@ -26,7 +26,7 @@
 		<?php echo $title_for_layout; ?>
 	</title>
 	<?php
-		echo $this->Html->meta('icon');
+		//echo $this->Html->meta('icon');
 
 		echo $this->Html->css('cake.generic');
 
@@ -36,7 +36,9 @@
 <body>
 	<div id="container">
 		<div id="header">
-			<h1><?php echo $this->Html->link(__('CakePHP: the rapid development php framework', true), 'http://cakephp.org'); ?></h1>
+      <!-- <h1><?php echo $this->Html->link(__('CakePHP: the rapid development php framework', true), 'http://cakephp.org'); ?></h1> -->
+      <h1><?php echo $this->Html->link(__('Short List'), true); ?></h1>
+
 		</div>
 		<div id="content">
 

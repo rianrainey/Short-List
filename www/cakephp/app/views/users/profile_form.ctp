@@ -7,7 +7,9 @@
 		echo $this->Form->input('last_name');
 		echo $this->Form->input('email');
 		echo $this->Form->input('role_id', array('type' => 'select', 'options' => $roles ));
-		foreach ($question as $value)		
+		foreach ($questions as $value) {
+			echo $this->Form->input($value, array('label' => $value);
+		}
 	?>
     </form>
 
