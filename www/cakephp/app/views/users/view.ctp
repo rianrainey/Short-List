@@ -39,6 +39,7 @@
 		<li><?php echo $this->Html->link(__('New Role', true), array('controller' => 'roles', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Answers', true), array('controller' => 'answers', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Answer', true), array('controller' => 'answers', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Fill Out Questionnaire', true), array('controller' => 'users', 'action' => 'profile_form')); ?> </li>
 	</ul>
 </div>
 <div class="related">
