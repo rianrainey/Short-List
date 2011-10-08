@@ -33,4 +33,6 @@
  * @link http://book.cakephp.org/view/957/The-App-Controller
  */
 class AppController extends Controller {
+  
+  var $helpers = array('Html', 'Form', 'Javascript', 'Session');
 }

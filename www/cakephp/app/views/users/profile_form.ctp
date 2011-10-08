@@ -2,6 +2,8 @@
 <h2><?php  __('User');?></h2>
 
 <?php echo 'hello world'; ?>
+<?php echo $this->Form->create('Recipe'); ?>
+
 </div>
 <div class="actions">
 	<h3><?php __('Actions'); ?></h3>
