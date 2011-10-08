@@ -1,7 +1,18 @@
 <div class="users view">
 <h2><?php  __('User');?></h2>
+    <?php echo $this->Form->create(); ?>
+    <form id="QuestionaireForm" method="post" action="/users/add">
+	<?php
+		echo $this->Form->input('first_name');
+		echo $this->Form->input('last_name');
+		echo $this->Form->input('email');
+		echo $this->Form->input('role_id', array('type' => 'select', 'options' => $roles ));
+		foreach ($question as $value)		
+	?>
+    </form>
 
-<?php echo 'hello world'; ?>
+    <?php echo $this->Form->end('Complete Questionaire'); ?>
+
 </div>
 <div class="actions">
 	<h3><?php __('Actions'); ?></h3>
