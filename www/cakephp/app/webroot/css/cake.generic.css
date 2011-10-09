@@ -543,9 +543,34 @@ div.code-coverage-results span.result-good {
 	display: none;
 }
 
-/*********** Custom CSS ***************/
 
+
+/* ************** Added by Curtis *************** */
+
+p#traitListHeading {
+	margin-left: 340px;
+	font-size: 1.25em;
+	font-style: bold;
+}
+
+ol#sortable li{
+	margin-top: 1.3em;
+	margin-bottom: 1.3em;
+}
+
+div.noLeftB{
+	border-left: none;
+}
+
+
+
+
+
+
+
+/*********** Custom CSS ***************/
 div.radio input[type=radio] {
 	display: inline;
 	float: none;
 }
+

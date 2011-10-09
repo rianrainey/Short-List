@@ -117,16 +117,14 @@ class UsersController extends AppController {
 	  
 	  if (!empty($this->data)) {
 	    // We have arranged traits, so let's query the db
-	    debug($this->data);
+	    // debug($this->data);
 	    
 	    //$this->loadModel('Trait');
 	    $scores = $this->Score->find('all');
   	  
   	  //$this->Trait->Behaviors->attach('Containable'); // give me only Trait object
   	  
-	    //$traits = $this->Trait->find('all', array(
-	      
-	    ));
+	    //$traits = $this->Trait->find('all', array());
 			
       // $sTraits = array();
       // foreach ($traits as $trait) {
