@@ -1,13 +1,15 @@
 <?php
 class UsersController extends AppController {
   
-  var $uses = array('Trait', 'Score');
+  var $uses = array('Trait', 'Score', 'User', 'Role');
 	var $name = 'Users';
 	var $helpers = array('Js' => array('Jquery'));
 	//var $helpers = array('Html','Javascript');
 
 	function index() {
-		$this->User->recursive = 0;
+	  $users = $this->User->find('all');
+	  
+		//$this->User->recursive = 0;
 		$this->set('users', $this->paginate());
 	}
 
@@ -117,16 +119,26 @@ class UsersController extends AppController {
 	  
 	  if (!empty($this->data)) {
 	    // We have arranged traits, so let's query the db
-	    debug($this->data);
+	    //debug($this->data);
+	    
+	    $a = array();
+	    foreach ($this->data as $v) {
+	      $a[] = $v;
+	    }
+	    //debug($a);
+
+	    
+	    
 	    
 	    //$this->loadModel('Trait');
-	    $scores = $this->Score->find('all');
+	    //$scores = $this->Score->find('all');
+	    //debug($scores);
   	  
   	  //$this->Trait->Behaviors->attach('Containable'); // give me only Trait object
   	  
 	    //$traits = $this->Trait->find('all', array(
 	      
-	    ));
+	    //));
 			
       // $sTraits = array();
       // foreach ($traits as $trait) {
@@ -136,21 +148,23 @@ class UsersController extends AppController {
 
 	    //debug($sTraits);
 	    
-	    $users = $this->User->find('all', array(
-	        'conditions' => array(
-	            'User.role_id' => 2,
-	          ),
-	        'order' => array(
-            $sTraits
-            //'User.id DESC',
+      //$score = $this->Score->findAllByTrait('1');
+
+      $users = $this->Score->find('all', array(
+          'conditions' => array(
+              'Score.trait_id' => $a[0],
             ),
-	      ));
+          // 'order' => array($a[0], $a[1], $a[2], $a[3] ),
+        ));
+        
+        //debug($users);
+        
 	  }
-	  else {
-	    $users = $this->User->find('all');
-	  }
+    // else {
+    //   $users = $this->User->find('all');
+    // }
 		//$this->set('users', $this->paginate());
-		debug($users);
+		//debug($score);
 		$this->set(compact('users'));
 	  
 	}
