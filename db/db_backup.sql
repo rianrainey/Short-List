@@ -75,7 +75,7 @@ CREATE TABLE `roles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -84,8 +84,34 @@ CREATE TABLE `roles` (
 
 LOCK TABLES `roles` WRITE;
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
-INSERT INTO `roles` VALUES (1,'Employee');
+INSERT INTO `roles` VALUES (1,'Employee'),(2,'Employer');
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `scores`
+--
+
+DROP TABLE IF EXISTS `scores`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `scores` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `value` float DEFAULT NULL,
+  `trait_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `scores`
+--
+
+LOCK TABLES `scores` WRITE;
+/*!40000 ALTER TABLE `scores` DISABLE KEYS */;
+INSERT INTO `scores` VALUES (1,10,1,1),(2,9,2,1),(3,8,3,1),(4,7,1,1),(5,3,4,2),(6,4,1,2);
+/*!40000 ALTER TABLE `scores` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -126,7 +152,7 @@ CREATE TABLE `users` (
   `email` varchar(50) NOT NULL,
   `role_id` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -135,7 +161,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Rian','RaineyRasdfasDFSDFSFDS','rian@rianrainey.com',NULL);
+INSERT INTO `users` VALUES (1,'Rian','Rainey','rian@rianrainey.com',1),(2,'John','Smith','josh@john.com',2),(3,'Steven','Brown','nostra.per@malesuadamalesuadaInteger.edu',1),(4,'Josh','Kulp','nascetur.ridiculus.mus@pharetraNamac.edu',2),(5,'Erik','Osmono','Aenean.eget.magna@Phasellusdolor.ca',1),(6,'Mark','Stansbury','risus.Morbi@Proinsed.com',2),(7,'Mary','Smith','Vestibulum.ut@at.com',1),(8,'Chris','Balzer','et.magna.Praesent@augueid.ca',2),(9,'Dave','Gillespi','magna.Praesent@auctor.edu',1),(10,'Dan','Rockwell','Pellentesque.ultricies@purussapiengravida.edu',2),(11,'Andrew','Jones','mi.eleifend.egestas@dictumplacerataugue.edu',1),(12,'Mike','Kroptavich','Donec.consectetuer@aliquetsem.edu',2),(13,'Vince','Smigiel','lorem.sit.amet@Fuscefermentumfermentum.com',1),(14,'Eric','Hurr','nunc@euduiCum.edu',2),(15,'Hillary','Corna','metus.sit.amet@vulputaterisusa.com',1),(16,'Steven','Gacha','facilisi.Sed.neque@pretiumaliquetmetus.edu',2),(17,'Matt ','Hill','ultricies.ligula.Nullam@malesuada.ca',1),(18,'Imanuel','Austiv','dui@lacusvarius.com',2),(19,'Carrie','Phillips','a.nunc@Nullam.edu',1),(20,'Phil','Jones','magna@sitametlorem.edu',2),(21,'Zach','Boerger','commodo@nibhlacinia.ca',1),(22,'Luiz','Nevas','mus.Proin.vel@nisl.edu',2),(23,'Suzy','Bureau','est@gravidanuncsed.edu',1),(24,'John','Bord','metus.urna@etcommodo.org',2);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -148,4 +174,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2011-10-08 16:27:23
+-- Dump completed on 2011-10-09 16:51:49
