@@ -1,17 +1,11 @@
 <div class="users view">
-<h2><?php  __('User');?></h2>
-    <?php echo $this->Form->create(); ?>
-    <form id="QuestionaireForm" method="post" action="/users/add">
+<h2>Job Skills Questionaire</h2>
+    <?php echo $this->Form->create('User',array('action' => '../answers/add')); ?>
 	<?php
-		echo $this->Form->input('first_name');
-		echo $this->Form->input('last_name');
-		echo $this->Form->input('email');
-		echo $this->Form->input('role_id', array('type' => 'select', 'options' => $roles ));
-		foreach ($questions as $value) {
-			echo $this->Form->input($value, array('label' => $value);
-		}
-	?>
-    </form>
+		echo $this->Form->hidden('id',array('value' => $user['User']['id']));
+			foreach ($questions as $key => $question) { ?>		
+			<?php echo $this->Form->input($question['Questions']['id'], array('type' => 'radio', 'options' => array(1,2,3,4,5), 'legend' => $question['Questions']['name'])); ?>
+	<?php } ?>
 
     <?php echo $this->Form->end('Complete Questionaire'); ?>
 
