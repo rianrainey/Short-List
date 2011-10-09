@@ -102,7 +102,7 @@ class UsersController extends AppController {
 	  $this->User->recursive = 0;
 	  
 	  $this->loadModel('Trait');
-	  $traits = $this->Trait->find('list');
+	  $traits = $this->Trait->find('all');
 	  //var_dump($traits);
 	  
 		//$users = $this->paginate('User');// $this->set(compact('users', 'traits'), $this->paginate());
@@ -110,4 +110,27 @@ class UsersController extends AppController {
 		
 	}
 	
+	function search ($id = null) {
+	  //$this->User->Behaviors->attach('Containable');
+		
+	  //debug($this->data);
+	  
+	  if (!empty($this->data)) {
+	    // We have arranged traits, so let's query the db
+	    debug($this->data);
+	    
+	    $users = $this->User->find('all', array(
+	        'conditions' => array(
+	            'User.role_id' => 2,
+	           // 'Order By' => 
+	          ),
+	      ));
+	  }
+	  else {
+	    $users = $this->User->find('all');
+	  }
+		//$this->set('users', $this->paginate());
+		$this->set(compact('users'));
+	  
+	}
 }
