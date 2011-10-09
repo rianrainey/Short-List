@@ -1,4 +1,5 @@
 <?php
+// debug($traits);
 //debug($traits);
 ?>
 
@@ -6,10 +7,14 @@
 <?php $html->script(array('jquery-ui-min.js'), array('inline' => false)); ?>
 <?php $html->script(array('script.js'), array('inline' => false)); ?>
 
+<p id="traitListHeading"> Please rank the following traits as most important(#1) to least important(#4). </p>
+<div class="traits index noLeftB">
+ <ol id="sortable">
 
-<div class="traits index">
+<div class="traits index noLeftB">
   <?php echo $this->Form->create('User', array('action' => 'search')); ?>
   <ol id="sortable">
+
   <?php foreach ($traits as $trait):
   		$i = 0;
   		$class = null;
