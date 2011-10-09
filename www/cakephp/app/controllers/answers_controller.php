@@ -23,15 +23,15 @@ class AnswersController extends AppController {
 			$answers = array();
 			$count = 0;
 			$success;
-			foreach($this->data['User'] as $key => $value){
+			foreach($this->data['User'] as $key => $answer){
 				if($key == 'id'){
-					$userid = $value;
-//					pr($value);
+					$userid = $answer;
+//					pr($answer);
 				}
 				else{
 //					pr($key);
 					$this->Answer->create();
-					if ($this->Answer->save(array('Answer' => array('question_id' => $key, 'value'=>$value, 'user_id' => $userid)))) {
+					if ($this->Answer->save(array('Answer' => array('question_id' => $key, 'value'=>$answer, 'user_id' => $userid)))) {
 						$this->Session->setFlash(__('The answer has been saved', true));
 						$success = true;
 					} else {

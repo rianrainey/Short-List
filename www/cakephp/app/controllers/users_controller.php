@@ -71,7 +71,7 @@ class UsersController extends AppController {
 			$this->redirect(array('action' => 'index'));
 		}
 		if (!empty($this->data)) {
-			var_dump($this->data);
+			//var_dump($this->data);
 			if ($this->User->save($this->data)) {
 				$this->Session->setFlash(__('The user has been saved', true));
 				$this->redirect(array('action' => 'user',$user['User']['id']));
@@ -81,7 +81,7 @@ class UsersController extends AppController {
 		}
 		$this->loadModel('Questions');
 		$questions = $this->Questions->find('all');
-		var_dump($questions);
+		//var_dump($questions);
 
 		$this->set(compact('questions'));
 		$this->set('user', $this->User->read(null, $id));

@@ -3,7 +3,7 @@
     <?php echo $this->Form->create('User',array('action' => '../answers/add')); ?>
 	<?php
 		echo $this->Form->hidden('id',array('value' => $user['User']['id']));
-			foreach ($questions as $key => $question) { ?>		
+		foreach ($questions as $key => $question) { ?>		
 			<?php echo $this->Form->input($question['Questions']['id'], array('type' => 'radio', 'options' => array(1,2,3,4,5), 'legend' => $question['Questions']['name'])); ?>
 	<?php } ?>
 
