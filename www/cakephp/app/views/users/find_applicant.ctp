@@ -1,5 +1,5 @@
 <?php
-//debug($traits);
+debug($traits);
 ?>
 
 <?php $html->script(array('jquery'), array('inline' => false)); ?>

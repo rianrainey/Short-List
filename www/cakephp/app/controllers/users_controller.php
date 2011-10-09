@@ -82,16 +82,26 @@ class UsersController extends AppController {
 	}
 	
 	function search ($id = null) {
-	  
-	  debug($this->data);
+	  //$this->User->Behaviors->attach('Containable');
+		
+	  //debug($this->data);
 	  
 	  if (!empty($this->data)) {
 	    // We have arranged traits, so let's query the db
-	    $users = $this->User->find('list');
+	    debug($this->data);
+	    
+	    $users = $this->User->find('all', array(
+	        'conditions' => array(
+	            'User.role_id' => 2,
+	           // 'Order By' => 
+	          ),
+	      ));
 	  }
-	  $this->User->recursive = 0;
-		$this->set('users', $this->paginate());
-		
+	  else {
+	    $users = $this->User->find('all');
+	  }
+		//$this->set('users', $this->paginate());
+		$this->set(compact('users'));
 	  
 	}
 }
