@@ -1,6 +1,7 @@
 <?php
 class UsersController extends AppController {
-
+  
+  var $uses = array('Trait', 'Score');
 	var $name = 'Users';
 	var $helpers = array('Js' => array('Jquery'));
 	//var $helpers = array('Html','Javascript');
@@ -66,7 +67,36 @@ class UsersController extends AppController {
 	}
 	
 	function profile_form ($id = null) {
-	  
+		if (!$id && empty($this->data)) {
+			$this->Session->setFlash(__('Invalid user', true));
+			$this->redirect(array('action' => 'index'));
+		}
+		if (!empty($this->data)) {
+			var_dump($this->data);
+			if ($this->User->save($this->data)) {
+				$this->Session->setFlash(__('The user has been saved', true));
+				$this->redirect(array('action' => 'user',$user['User']['id']));
+			} else {
+				$this->Session->setFlash(__('The user could not be saved. Please, try again.', true));
+			}
+		}
+		$this->loadModel('Questions');
+		$questions = $this->Questions->find('all');
+		var_dump($questions);
+
+		$this->set(compact('questions'));
+		$this->set('user', $this->User->read(null, $id));
+	}
+	
+	function add_questions(){
+		if (!empty($this->data)) {
+			if ($this->User->save($this->data)) {
+				$this->Session->setFlash(__('The user has been saved', true));
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The user could not be saved. Please, try again.', true));
+			}
+		}
 	}
 	
 	function find_applicant ($id = null) {
@@ -82,7 +112,6 @@ class UsersController extends AppController {
 	}
 	
 	function search ($id = null) {
-	  //$this->User->Behaviors->attach('Containable');
 		
 	  //debug($this->data);
 	  
@@ -90,18 +119,38 @@ class UsersController extends AppController {
 	    // We have arranged traits, so let's query the db
 	    // debug($this->data);
 	    
+	    //$this->loadModel('Trait');
+	    $scores = $this->Score->find('all');
+  	  
+  	  //$this->Trait->Behaviors->attach('Containable'); // give me only Trait object
+  	  
+	    //$traits = $this->Trait->find('all', array());
+			
+      // $sTraits = array();
+      // foreach ($traits as $trait) {
+      //   $sTraits[] = $trait['Trait']['name']; // add trait name to array stack
+      // }
+      
+
+	    //debug($sTraits);
+	    
 	    $users = $this->User->find('all', array(
 	        'conditions' => array(
 	            'User.role_id' => 2,
-	           // 'Order By' => 
 	          ),
+	        'order' => array(
+            $sTraits
+            //'User.id DESC',
+            ),
 	      ));
 	  }
 	  else {
 	    $users = $this->User->find('all');
 	  }
 		//$this->set('users', $this->paginate());
+		debug($users);
 		$this->set(compact('users'));
 	  
 	}
+
 }

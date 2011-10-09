@@ -1,13 +1,19 @@
 <div class="users view">
-<h2><?php  __('User');?></h2>
+<h2>Job Skills Questionaire</h2>
+    <?php echo $this->Form->create('User',array('action' => '../answers/add')); ?>
+	<?php
+		echo $this->Form->hidden('id',array('value' => $user['User']['id']));
+			foreach ($questions as $key => $question) { ?>		
+			<?php echo $this->Form->input($question['Questions']['id'], array('type' => 'radio', 'options' => array(1,2,3,4,5), 'legend' => $question['Questions']['name'])); ?>
+	<?php } ?>
 
-<?php echo 'hello world'; ?>
-<?php echo $this->Form->create('Recipe'); ?>
+    <?php echo $this->Form->end('Complete Questionaire'); ?>
 
 </div>
 <div class="actions">
 	<h3><?php __('Actions'); ?></h3>
 	<ul>
+    <li><?php echo $this->Html->link(__('View Profile', true), array('action' => 'view', $user['User']['id'])); ?> </li>
     <!-- <li><?php echo $this->Html->link(__('Edit User', true), array('action' => 'edit', $user['User']['id'])); ?> </li>
     <li><?php echo $this->Html->link(__('Delete User', true), array('action' => 'delete', $user['User']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $user['User']['id'])); ?> </li>
     <li><?php echo $this->Html->link(__('List Users', true), array('action' => 'index')); ?> </li>
