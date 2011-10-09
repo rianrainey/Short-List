@@ -128,7 +128,8 @@ class UsersController extends AppController {
 	    //debug($a);
 
 	    
-	    
+	
+	    // debug($this->data);
 	    
 	    //$this->loadModel('Trait');
 	    //$scores = $this->Score->find('all');
@@ -136,9 +137,11 @@ class UsersController extends AppController {
   	  
   	  //$this->Trait->Behaviors->attach('Containable'); // give me only Trait object
   	  
+
 	    //$traits = $this->Trait->find('all', array(
 	      
 	    //));
+	    //$traits = $this->Trait->find('all', array());
 			
       // $sTraits = array();
       // foreach ($traits as $trait) {

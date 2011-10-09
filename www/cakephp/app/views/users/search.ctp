@@ -1,4 +1,5 @@
 <?php
+// debug($users);
 //debug($users);
 ?><div class="users index">
 	<h2><?php echo 'Qualified Applicants for' . ' ' . $users[0]['Trait']['name'];?></h2>
