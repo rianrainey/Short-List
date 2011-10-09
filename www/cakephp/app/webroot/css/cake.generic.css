@@ -543,13 +543,31 @@ div.code-coverage-results span.result-good {
 }
 
 
+
 /* ************** Added by Curtis *************** */
 
 p#traitListHeading {
-	margin-left: 300px;
+	margin-left: 340px;
+	font-size: 1.25em;
+	font-style: bold;
 }
 
 ol#sortable li{
 	margin-top: 1.3em;
 	margin-bottom: 1.3em;
 }
+
+div.noLeftB{
+	border-left: none;
+}
+
+
+
+
+
+
+
+/*********** Custom CSS ***************/
+
+
+
