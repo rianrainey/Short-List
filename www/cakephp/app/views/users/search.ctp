@@ -1,5 +1,5 @@
 <?php
-debug($users);
+//debug($users);
 ?>
 
 <div class="users index">
@@ -13,7 +13,7 @@ debug($users);
 			$class = ' class="altrow"';
 		}
 	?>
-  <li><?php echo $user['User']['first_name'] . $user['User']['last_name']; ?></li>
+  <li><?php echo $user['User']['first_name'] . ' ' . $user['User']['last_name']; ?></li>
   
 
 <?php endforeach; ?>

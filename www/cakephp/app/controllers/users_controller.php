@@ -1,6 +1,7 @@
 <?php
 class UsersController extends AppController {
-
+  
+  var $uses = array('Trait', 'Score');
 	var $name = 'Users';
 	var $helpers = array('Js' => array('Jquery'));
 	//var $helpers = array('Html','Javascript');
@@ -82,7 +83,6 @@ class UsersController extends AppController {
 	}
 	
 	function search ($id = null) {
-	  //$this->User->Behaviors->attach('Containable');
 		
 	  //debug($this->data);
 	  
@@ -90,17 +90,38 @@ class UsersController extends AppController {
 	    // We have arranged traits, so let's query the db
 	    debug($this->data);
 	    
+	    //$this->loadModel('Trait');
+	    $scores = $this->Score->find('all');
+  	  
+  	  //$this->Trait->Behaviors->attach('Containable'); // give me only Trait object
+  	  
+	    //$traits = $this->Trait->find('all', array(
+	      
+	    ));
+			
+      // $sTraits = array();
+      // foreach ($traits as $trait) {
+      //   $sTraits[] = $trait['Trait']['name']; // add trait name to array stack
+      // }
+      
+
+	    //debug($sTraits);
+	    
 	    $users = $this->User->find('all', array(
 	        'conditions' => array(
 	            'User.role_id' => 2,
-	           // 'Order By' => 
 	          ),
+	        'order' => array(
+            $sTraits
+            //'User.id DESC',
+            ),
 	      ));
 	  }
 	  else {
 	    $users = $this->User->find('all');
 	  }
 		//$this->set('users', $this->paginate());
+		debug($users);
 		$this->set(compact('users'));
 	  
 	}
