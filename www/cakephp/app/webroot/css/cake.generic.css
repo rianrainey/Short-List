@@ -543,10 +543,9 @@ div.code-coverage-results span.result-good {
 	display: none;
 }
 
+/*********** Custom CSS ***************/
+
 div.radio input[type=radio] {
 	display: inline;
 	float: none;
 }
-/*********** Custom CSS ***************/
-
-
