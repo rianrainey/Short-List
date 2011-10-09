@@ -318,7 +318,8 @@ input[type=radio] {
 	margin: 0 3px 7px 0;
 }
 div.radio label {
-	margin: 0 0 6px 20px;
+	margin: 0 20px 6px 10px;
+	display: inline;
 }
 input[type=submit] {
 	display: inline;
@@ -544,4 +545,7 @@ div.code-coverage-results span.result-good {
 
 /*********** Custom CSS ***************/
 
-
+div.radio input[type=radio] {
+	display: inline;
+	float: none;
+}

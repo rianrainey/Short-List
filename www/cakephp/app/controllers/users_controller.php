@@ -67,7 +67,36 @@ class UsersController extends AppController {
 	}
 	
 	function profile_form ($id = null) {
-	  
+		if (!$id && empty($this->data)) {
+			$this->Session->setFlash(__('Invalid user', true));
+			$this->redirect(array('action' => 'index'));
+		}
+		if (!empty($this->data)) {
+			var_dump($this->data);
+			if ($this->User->save($this->data)) {
+				$this->Session->setFlash(__('The user has been saved', true));
+				$this->redirect(array('action' => 'user',$user['User']['id']));
+			} else {
+				$this->Session->setFlash(__('The user could not be saved. Please, try again.', true));
+			}
+		}
+		$this->loadModel('Questions');
+		$questions = $this->Questions->find('all');
+		var_dump($questions);
+
+		$this->set(compact('questions'));
+		$this->set('user', $this->User->read(null, $id));
+	}
+	
+	function add_questions(){
+		if (!empty($this->data)) {
+			if ($this->User->save($this->data)) {
+				$this->Session->setFlash(__('The user has been saved', true));
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The user could not be saved. Please, try again.', true));
+			}
+		}
 	}
 	
 	function find_applicant ($id = null) {
@@ -125,4 +154,5 @@ class UsersController extends AppController {
 		$this->set(compact('users'));
 	  
 	}
+
 }
