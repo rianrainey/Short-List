@@ -22,21 +22,22 @@
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
-		<?php __('CakePHP: the rapid development php framework:'); ?>
+		<?php __('The Short List'); ?>
 		<?php echo $title_for_layout; ?>
 	</title>
 	<?php
 		//echo $this->Html->meta('icon');
 
 		echo $this->Html->css('cake.generic');
-
+//    $javascript->link('jquery');
+   // echo $this->Html->script('jquery'); // Include jQuery library. .js will be added
 		echo $scripts_for_layout;
+		$javascript->link('script.js', false);
 	?>
 </head>
 <body>
 	<div id="container">
 		<div id="header">
-      <!-- <h1><?php echo $this->Html->link(__('CakePHP: the rapid development php framework', true), 'http://cakephp.org'); ?></h1> -->
       <h1><?php echo $this->Html->link(__('Short List'), true); ?></h1>
 
 		</div>
@@ -56,6 +57,7 @@
 			?>
 		</div>
 	</div>
+	<?php echo $this->Js->writeBuffer(); // Write cached scripts ?>
 	<?php echo $this->element('sql_dump'); ?>
 </body>
 </html>

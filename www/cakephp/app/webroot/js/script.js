@@ -1,3 +1,7 @@
-$(document).ready(function() {
- alert('rian');	
-});
+
+	$(document).ready(function() {
+	
+		$('ul#sortable').sortable();
+	});
+		
+

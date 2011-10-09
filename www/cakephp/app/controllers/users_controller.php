@@ -2,6 +2,8 @@
 class UsersController extends AppController {
 
 	var $name = 'Users';
+	var $helpers = array('Js' => array('Jquery'));
+	//var $helpers = array('Html','Javascript');
 
 	function index() {
 		$this->User->recursive = 0;
