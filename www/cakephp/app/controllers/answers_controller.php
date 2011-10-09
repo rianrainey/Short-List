@@ -2,6 +2,7 @@
 class AnswersController extends AppController {
 
 	var $name = 'Answers';
+	var $uses = array('Score', 'Answer');
 
 	function index() {
 		$this->Answer->recursive = 0;
@@ -23,6 +24,12 @@ class AnswersController extends AppController {
 			$answers = array();
 			$count = 0;
 			$success;
+			$total = 0;
+
+			$this->loadModel('Trait');
+			$traits = $this->Trait->find('all');
+			$scores = array();
+
 			foreach($this->data['User'] as $key => $answer){
 				if($key == 'id'){
 					$userid = $answer;
@@ -30,8 +37,20 @@ class AnswersController extends AppController {
 				}
 				else{
 //					pr($key);
+					list($questionid,$traitid) = split('-', $key);
 					$this->Answer->create();
-					if ($this->Answer->save(array('Answer' => array('question_id' => $key, 'value'=>$answer, 'user_id' => $userid)))) {
+				pr($traitid);
+					$total = $answer;
+					$tempVal = 0;
+					if(!empty($scores[$traitid])){
+						$tempVal = $scores[$traitid];
+					}
+					if(!empty($tempVal)){
+						$total = $total + $tempVal;
+					}
+					$scores[$traitid] = $total;
+					
+					if ($this->Answer->save(array('Answer' => array('question_id' => $questionid, 'value'=>$answer, 'user_id' => $userid)))) {
 						$this->Session->setFlash(__('The answer has been saved', true));
 						$success = true;
 					} else {
@@ -39,6 +58,12 @@ class AnswersController extends AppController {
 					}
 				}
 				$count = $count + 1;
+			}
+			pr($scores);
+			foreach($scores as $traitkey => $score){
+				$this->Score->create();
+				if($this->Score->save(array('Score' => array('trait_id' => $traitkey, 'value'=> $score, 'user_id' => $userid)))){
+				}
 			}
 			if($success == true){
 				$this->redirect(array('action' => '../users','view',$userid));
