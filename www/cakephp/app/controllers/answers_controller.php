@@ -18,12 +18,30 @@ class AnswersController extends AppController {
 
 	function add() {
 		if (!empty($this->data)) {
-			$this->Answer->create();
-			if ($this->Answer->save($this->data)) {
-				$this->Session->setFlash(__('The answer has been saved', true));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The answer could not be saved. Please, try again.', true));
+//			pr($this->data);
+			$userid;
+			$answers = array();
+			$count = 0;
+			$success;
+			foreach($this->data['User'] as $key => $value){
+				if($key == 'id'){
+					$userid = $value;
+//					pr($value);
+				}
+				else{
+//					pr($key);
+					$this->Answer->create();
+					if ($this->Answer->save(array('Answer' => array('question_id' => $key, 'value'=>$value, 'user_id' => $userid)))) {
+						$this->Session->setFlash(__('The answer has been saved', true));
+						$success = true;
+					} else {
+						$this->Session->setFlash(__('The answer could not be saved. Please, try again.', true));
+					}
+				}
+				$count = $count + 1;
+			}
+			if($success == true){
+				$this->redirect(array('action' => '../users','view',$userid));
 			}
 		}
 		$questions = $this->Answer->Question->find('list');
