@@ -1,7 +1,7 @@
 
 	$(document).ready(function() {
 	
-		$('ul#sortable').sortable();
+		$('ol#sortable').sortable();
 	});
 		
 

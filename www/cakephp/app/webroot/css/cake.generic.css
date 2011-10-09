@@ -541,3 +541,15 @@ div.code-coverage-results span.result-good {
 #url-rewriting-warning {
 	display: none;
 }
+
+
+/* ************** Added by Curtis *************** */
+
+p#traitListHeading {
+	margin-left: 300px;
+}
+
+ol#sortable li{
+	margin-top: 1.3em;
+	margin-bottom: 1.3em;
+}
