@@ -73,11 +73,25 @@ class UsersController extends AppController {
 	  $this->User->recursive = 0;
 	  
 	  $this->loadModel('Trait');
-	  $traits = $this->Trait->find('list');
+	  $traits = $this->Trait->find('all');
 	  //var_dump($traits);
 	  
 		//$users = $this->paginate('User');// $this->set(compact('users', 'traits'), $this->paginate());
 		$this->set(compact('traits'));
 		
+	}
+	
+	function search ($id = null) {
+	  
+	  debug($this->data);
+	  
+	  if (!empty($this->data)) {
+	    // We have arranged traits, so let's query the db
+	    $users = $this->User->find('list');
+	  }
+	  $this->User->recursive = 0;
+		$this->set('users', $this->paginate());
+		
+	  
 	}
 }
