@@ -3,8 +3,8 @@
     <?php echo $this->Form->create('User',array('action' => '../answers/add')); ?>
 	<?php
 		echo $this->Form->hidden('id',array('value' => $user['User']['id']));
-			foreach ($questions as $key => $question) { ?>		
-			<?php echo $this->Form->input($question['Questions']['id'], array('type' => 'radio', 'options' => array(1,2,3,4,5), 'legend' => $question['Questions']['name'])); ?>
+		foreach ($questions as $key => $question) { ?>
+			<?php echo $this->Form->input(strval($question['Questions']['id']).'-'.strval($question['Questions']['trait_id']), array('type' => 'radio', 'options' => array(1,2,3,4,5), 'legend' => $question['Questions']['name'])); ?>
 	<?php } ?>
 
     <?php echo $this->Form->end('Complete Questionaire'); ?>
